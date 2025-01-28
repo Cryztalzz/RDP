@@ -4,4 +4,3 @@ tunnels:
   rdp:
     proto: tcp
     addr: 3389
-    region: ap
