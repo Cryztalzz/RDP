@@ -20,7 +20,6 @@ jobs:
         echo "  rdp:" >> ngrok.yml
         echo "    proto: tcp" >> ngrok.yml
         echo "    addr: 3389" >> ngrok.yml
-        echo "    region: ap" >> ngrok.yml  # Menambahkan region Singapura
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Verify ngrok.yml
@@ -32,4 +31,4 @@ jobs:
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "PelerAyam!" -Force)
     - name: Create Tunnel
-      run: .\ngrok\ngrok.exe start --config .\ngrok.yml rdp  # Menentukan konfigurasi file eksplisit
+      run: .\ngrok\ngrok.exe start --config .\ngrok.yml --region=ap rdp  # Menentukan region Singapura
