@@ -1,11 +1,5 @@
-- name: Configure ngrok
-  run: |
-    echo "version: '2'" > ngrok.yml
-    echo "authtoken: $Env:NGROK_AUTH_TOKEN" >> ngrok.yml
-    echo "tunnels:" >> ngrok.yml
-    echo "  rdp:" >> ngrok.yml
-    echo "    proto: tcp" >> ngrok.yml
-    echo "    addr: 3389" >> ngrok.yml
-    echo "    region: ap" >> ngrok.yml
-  env:
-    NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+tunnels:
+  rdp:
+    proto: tcp
+    addr: 3389
+    region: ap
